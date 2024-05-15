@@ -1,3 +1,3 @@
-# programacion3-2024
+# TPE Programacion 3
 
-boke
+Ortega, Cuba, Asencio
