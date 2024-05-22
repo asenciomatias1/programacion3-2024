@@ -21,6 +21,10 @@ public class Tarea {
         return this.critica;
     }
 
+    public Integer getPrioridad() {
+        return prioridad;
+    }
+
     @Override
     public String toString() {
         return "Tarea{" +
@@ -29,7 +33,7 @@ public class Tarea {
                 ", tiempo=" + tiempo +
                 ", prioridad=" + prioridad +
                 ", critica=" + critica +
-                '}';
+                '}' + "\n";
     }
 
 }

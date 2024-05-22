@@ -37,7 +37,7 @@ public class Servicios {
 	}
     
     /*
-     * Expresar la complejidad temporal del servicio 2.
+     * Complejidad temporal: O(n) donde n es es la cantidad de Tareas.
      */
 	public List<Tarea> servicio2(boolean esCritica) {
 		if (esCritica){
@@ -50,7 +50,18 @@ public class Servicios {
      * Expresar la complejidad temporal del servicio 3.
      */
 	public List<Tarea> servicio3(int prioridadInferior, int prioridadSuperior) {
-        return null;
+		List<Tarea> tareas = new LinkedList<>();
+		criticas.forEach((id, tarea) -> {
+			if (tarea.getPrioridad()>=prioridadInferior && tarea.getPrioridad()<=prioridadSuperior){
+				tareas.add(tarea);
+			}
+		});
+		noCriticas.forEach((id, tarea) -> {
+			if (tarea.getPrioridad()>=prioridadInferior && tarea.getPrioridad()<=prioridadSuperior){
+				tareas.add(tarea);
+			}
+		});
+        return tareas;
     }
 
 }
