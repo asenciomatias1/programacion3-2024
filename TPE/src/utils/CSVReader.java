@@ -28,6 +28,8 @@ public class CSVReader {
 			Boolean critica = Boolean.parseBoolean(line[3].trim());
 			Integer prioridad = Integer.parseInt(line[4].trim());
 			// Aca instanciar lo que necesiten en base a los datos leidos
+
+			Tarea t = new Tarea(id, nombre, tiempo, critica, prioridad);
 		}
 		
 	}
