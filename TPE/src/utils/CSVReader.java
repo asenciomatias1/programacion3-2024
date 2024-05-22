@@ -1,5 +1,5 @@
-package tpe.utils;
-
+package TPE.src.utils;
+import TPE.src.Tarea;
 
 import java.io.BufferedReader;
 import java.io.File;
