@@ -47,7 +47,7 @@ public class Servicios {
     }
 
     /*
-     * Expresar la complejidad temporal del servicio 3.
+     * Complejidad temporal: O(2n) --> O(n). Donde n es la cantidad de Tareas de cada hashmap de tareas.
      */
 	public List<Tarea> servicio3(int prioridadInferior, int prioridadSuperior) {
 		List<Tarea> tareas = new LinkedList<>();
