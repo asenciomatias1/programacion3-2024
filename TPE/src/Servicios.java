@@ -2,6 +2,7 @@ package TPE.src;
 import TPE.src.utils.CSVReader;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -39,7 +40,10 @@ public class Servicios {
      * Expresar la complejidad temporal del servicio 2.
      */
 	public List<Tarea> servicio2(boolean esCritica) {
-		return null;
+		if (esCritica){
+			return new LinkedList<>(criticas.values());
+		}
+		return new LinkedList<>(noCriticas.values());
     }
 
     /*
