@@ -13,4 +13,12 @@ public class Tarea {
         this.critica = critica;
     }
 
+    public String getId (){
+        return this.id;
+    }
+
+    public boolean esCritica(){
+        return this.critica;
+    }
+
 }

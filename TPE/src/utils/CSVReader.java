@@ -6,20 +6,23 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class CSVReader {
 
 	public CSVReader() {
 	}
-	
-	public void readTasks(String taskPath) {
+
+	public void readTasks(String taskPath, HashMap<String, Tarea> criticas, HashMap<String, Tarea> noCriticas) {
 		
 		// Obtengo una lista con las lineas del archivo
 		// lines.get(0) tiene la primer linea del archivo
 		// lines.get(1) tiene la segunda linea del archivo... y así
 		ArrayList<String[]> lines = this.readContent(taskPath);
-		
+		HashMap<String, Tarea> tareasCriticas = new HashMap<>();
+		HashMap<String, Tarea> tareasNoCriticas = new HashMap<>();
+
 		for (String[] line: lines) {
 			// Cada linea es un arreglo de Strings, donde cada posicion guarda un elemento
 			String id = line[0].trim();
@@ -29,9 +32,12 @@ public class CSVReader {
 			Integer prioridad = Integer.parseInt(line[4].trim());
 			// Aca instanciar lo que necesiten en base a los datos leidos
 
-			Tarea t = new Tarea(id, nombre, tiempo, critica, prioridad);
+			Tarea t = new Tarea(id, nombre, tiempo, prioridad, critica);
+			if (t.esCritica())
+				criticas.put(t.getId(), t);
+			else
+				noCriticas.put(t.getId(), t);
 		}
-		
 	}
 	
 public void readProcessors(String processorPath) {
