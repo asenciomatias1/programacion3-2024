@@ -11,4 +11,8 @@ public class Procesador {
         this.esta_refrigerado = esta_refrigerado;
         this.anio_funcionamiento = anio_funcionamiento;
     }
+
+    public boolean esRefrigerado(){
+        return esta_refrigerado;
+    }
 }
