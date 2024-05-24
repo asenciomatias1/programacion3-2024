@@ -1,3 +1,3 @@
-# TPE Programacion 3
+# Trabajo Practico Especial Programacion 3 - 2024
 
-Ortega, Cuba, Asencio
+Integrantes: Asencio Matias, Cuba Martinez Victoria y Ortega Sebastian
