@@ -27,3 +27,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+/TPE/src/.idea/misc.xml
+/TPE/src/.idea/workspace.xml
