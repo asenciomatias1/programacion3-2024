@@ -33,22 +33,34 @@ public class Solucion {
 //       y otro que se encargue de saber si es asignable por tareas criticas
 
     public boolean esAsignable(Procesador p, Tarea t, int tiempoMaxNoRefrigerado){
-        int tareasCriticas = 0;
-        int tiempoProcesador = 0;
-
         if (!t.esCritica() && p.esRefrigerado()){
             return true;
-        } else if (!p.esRefrigerado()) {
-            for (Tarea tActual : this.solucion.get(p)){
-                tiempoProcesador += tActual.getTiempo();
-            }
         }
+        else if(t.esCritica() && p.esRefrigerado()) {
+            return esAsignableCritica(p, t);
+        }
+        else if (t.esCritica() && !p.esRefrigerado()){
+            return esAsignableCritica(p, t) && esAsignablePorTiempo(p, t, tiempoMaxNoRefrigerado);
+        }
+        //!t.esCritica() && !p.esRefrigerado()) {
+        return esAsignablePorTiempo(p, t, tiempoMaxNoRefrigerado);
 
+    }
+
+    private boolean esAsignableCritica(Procesador p, Tarea t){
+        int tareasCriticas = 0;
         for (Tarea tActual : this.solucion.get(p)){
-            tareasCriticas++;
+            if (tActual.esCritica())
+                tareasCriticas++;
         }
-
         return tareasCriticas < 2;
     }
 
+    private boolean esAsignablePorTiempo(Procesador p, Tarea t, int tiempoMaxNoRefrigerado){
+        int tiempoProcesador = 0;
+        for (Tarea tActual : this.solucion.get(p)){
+            tiempoProcesador += tActual.getTiempo();
+        }
+        return ((tiempoProcesador + t.getTiempo()) <= tiempoMaxNoRefrigerado);
+    }
 }

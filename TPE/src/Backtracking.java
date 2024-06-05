@@ -11,8 +11,10 @@ public class Backtracking {
         this.solucion = new Solucion();
     }
 
-    public Solucion back(){
-
+    public Solucion back(LinkedList<Procesador> procesadores, Stack<Tarea> tareas, int tiempoMaxNoRefrigerado){
+        Solucion solucionParcial = new Solucion();
+        this.back(procesadores, tareas, solucionParcial, tiempoMaxNoRefrigerado);
+        return this.solucion;
     }
 
     private void back(LinkedList<Procesador> procesadores, Stack<Tarea> tareas, Solucion solucionParcial,
