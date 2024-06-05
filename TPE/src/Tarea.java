@@ -25,6 +25,14 @@ public class Tarea {
         return prioridad;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Integer getTiempo() {
+        return tiempo;
+    }
+
     @Override
     public String toString() {
         return "Tarea{" +
