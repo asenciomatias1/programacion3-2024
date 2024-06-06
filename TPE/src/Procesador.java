@@ -15,4 +15,14 @@ public class Procesador {
     public boolean esRefrigerado(){
         return esta_refrigerado;
     }
+
+    @Override
+    public String toString() {
+        return "Procesador{" +
+                "id='" + id + '\'' +
+                ", codigo='" + codigo + '\'' +
+                ", esta_refrigerado=" + esta_refrigerado +
+                ", anio_funcionamiento=" + anio_funcionamiento +
+                '}';
+    }
 }

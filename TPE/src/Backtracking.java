@@ -29,7 +29,7 @@ public class Backtracking {
                 if (solucionParcial.esAsignable(p, tareaActual, tiempoMaxNoRefrigerado)){
                     solucionParcial.asignarTarea(p, tareaActual);
                     back(procesadores, tareas, solucionParcial, tiempoMaxNoRefrigerado);
-                    tareas.push(tareaActual);
+                    //tareas.push(tareaActual);
                     solucionParcial.desasignarTarea(p, tareaActual);
                 }
             }

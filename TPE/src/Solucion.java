@@ -2,13 +2,23 @@ package TPE.src;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 public class Solucion {
     private int tiempo;
     private HashMap<Procesador, LinkedList<Tarea>> solucion;
 
     public Solucion(){
+        this.solucion = new HashMap<>();
         this.tiempo = 0;
+    }
+
+    public Solucion(LinkedList<Procesador> procesadores){
+        this.tiempo = 0;
+        this.solucion = new HashMap<>();
+        for (Procesador p : procesadores){
+            solucion.put(p, new LinkedList<Tarea>());
+        }
     }
 
     public int getTiempo() {
@@ -62,5 +72,23 @@ public class Solucion {
             tiempoProcesador += tActual.getTiempo();
         }
         return ((tiempoProcesador + t.getTiempo()) <= tiempoMaxNoRefrigerado);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<Procesador, LinkedList<Tarea>> entry : solucion.entrySet()) {
+            Procesador procesador = entry.getKey();
+            LinkedList<Tarea> tareas = entry.getValue();
+
+            sb.append(procesador.toString()).append(" -> "); // Información del procesador
+
+            for (Tarea tarea : tareas) {
+                sb.append(tarea.toString()); // Información de cada tarea
+            }
+
+            sb.append("\n"); // Salto de línea entre procesadores
+        }
+        return sb.toString();
     }
 }
