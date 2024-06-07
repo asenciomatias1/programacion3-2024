@@ -10,11 +10,11 @@ public class Solucion {
 
     public Solucion(){
         this.solucion = new HashMap<>();
-        this.tiempo = 0;
+        this.tiempo = Integer.MAX_VALUE;
     }
 
     public Solucion(LinkedList<Procesador> procesadores){
-        this.tiempo = 0;
+        this.tiempo = Integer.MAX_VALUE;
         this.solucion = new HashMap<>();
         for (Procesador p : procesadores){
             solucion.put(p, new LinkedList<Tarea>());
