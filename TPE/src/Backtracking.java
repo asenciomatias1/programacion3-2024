@@ -27,7 +27,7 @@ public class Backtracking {
                       int tiempoMaxNoRefrigerado){
         if (tareas.empty()){
             // El tiempo que hay que buscar es el tiempo de ejecucion del peor procesador (el mas lento o
-            // que tenga el mayor tiempo)
+            // que tenga el mayor tiempo) -- la suma de todos los tiempos de las tareas del peor procesador
             if (this.solucion == null || this.solucion.getTiempo() > solucionParcial.getTiempo()){
                 this.solucion = solucionParcial;
             }
