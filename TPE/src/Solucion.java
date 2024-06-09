@@ -27,6 +27,11 @@ public class Solucion {
 
     public void setTiempo(int tiempo) {
         this.tiempo = tiempo;
+        this.tiempo = tiempo;
+    }
+
+    public HashMap<Procesador, LinkedList<Tarea>> getSolucion() {
+        return solucion;
     }
 
     public void asignarTarea(Procesador p, Tarea t){
@@ -51,6 +56,15 @@ public class Solucion {
         }
 
         this.setTiempo(tiempoActual);
+    }
+
+    public int getTiempoEjecucionTareas(Procesador p){
+        int tiempo = 0;
+        LinkedList<Tarea> tareas = this.solucion.get(p);
+        for (Tarea t : tareas){
+            tiempo += t.getTiempo();
+        }
+        return tiempo;
     }
 
     public void desasignarTarea(Procesador p, Tarea t){
