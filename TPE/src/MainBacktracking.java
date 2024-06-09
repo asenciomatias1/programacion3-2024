@@ -18,5 +18,9 @@ public class MainBacktracking {
         Solucion s1 = b1.back(procesadores, tareas, 60);
         System.out.println("-- PRUEBA BACKTRACKING --");
         System.out.println(s1);
+        System.out.print("Tiempo maximo de ejecucion: ");
+        System.out.println(s1.getTiempo());
+        System.out.print("Métrica para analizar el costo de la solución (cantidad de estados generados): ");
+        System.out.println(b1.getCantEstados());
     }
 }

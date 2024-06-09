@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class Solucion {
-    private int tiempo;
+    private int tiempo; //El tiempo mayor del peor procesador
     private HashMap<Procesador, LinkedList<Tarea>> solucion;
 
     public Solucion(){
@@ -25,22 +25,40 @@ public class Solucion {
         return tiempo;
     }
 
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
     public void asignarTarea(Procesador p, Tarea t){
         if (this.solucion.containsKey(p) && !solucion.get(p).contains(t)){
             LinkedList<Tarea> listaTareas = solucion.get(p);
             listaTareas.add(t);
             this.solucion.put(p,listaTareas);
+            this.updateTiempo();
         }
+    }
+
+    private void updateTiempo(){
+        int tiempoActual = 0;
+        for (LinkedList<Tarea> list : solucion.values()){
+            int tiempoParcialTarea = 0;
+            for (Tarea t : list){
+                tiempoParcialTarea += t.getTiempo();
+            }
+            if (tiempoParcialTarea > tiempoActual){
+                tiempoActual = tiempoParcialTarea;
+            }
+        }
+
+        this.setTiempo(tiempoActual);
     }
 
     public void desasignarTarea(Procesador p, Tarea t){
         if (this.solucion.containsKey(p)){
             solucion.get(p).remove(t);
+            this.updateTiempo();
         }
     }
-//    TO DO
-//       separar esAsignable en 2 metodos, uno que se encargue de chequear si es asignable por tiempo
-//       y otro que se encargue de saber si es asignable por tareas criticas
 
     public boolean esAsignable(Procesador p, Tarea t, int tiempoMaxNoRefrigerado){
         if (!t.esCritica() && p.esRefrigerado()){
@@ -74,6 +92,18 @@ public class Solucion {
         return ((tiempoProcesador + t.getTiempo()) <= tiempoMaxNoRefrigerado);
     }
 
+    public void copiarSolucion(Solucion s){
+        this.tiempo = s.tiempo;
+        HashMap<Procesador, LinkedList<Tarea>> copia = new HashMap<>();
+        for (Procesador p : s.solucion.keySet()){
+            copia.put(p, new LinkedList<>());
+            for (Tarea t : s.solucion.get(p)){
+                copia.get(p).add(t);
+            }
+        }
+        this.solucion = copia;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -90,5 +120,14 @@ public class Solucion {
             sb.append("\n"); // Salto de línea entre procesadores
         }
         return sb.toString();
+    }
+
+    public int getCantTareasAsignadas() {
+        int res = 0;
+        for (Procesador p : this.solucion.keySet()){
+            res += this.solucion.get(p).size();
+        }
+
+        return res;
     }
 }

@@ -1,6 +1,6 @@
 package TPE.src;
 
-public class Tarea {
+public class Tarea implements Comparable<Tarea>{
     private String id, nombre;
     private Integer tiempo, prioridad;
     private boolean critica;
@@ -44,4 +44,8 @@ public class Tarea {
                 '}' + "\n";
     }
 
+    @Override
+    public int compareTo(Tarea otraTarea) {
+        return this.getTiempo() - otraTarea.getTiempo();
+    }
 }

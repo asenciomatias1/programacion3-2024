@@ -66,6 +66,30 @@ public class CSVReader {
 
 		return res;
 	}
+
+	public LinkedList<Tarea> readTasksGreedy(String taskPath) {
+
+		// Obtengo una lista con las lineas del archivo
+		// lines.get(0) tiene la primer linea del archivo
+		// lines.get(1) tiene la segunda linea del archivo... y así
+		ArrayList<String[]> lines = this.readContent(taskPath);
+		LinkedList<Tarea> res = new LinkedList<>();
+
+		for (String[] line: lines) {
+			// Cada linea es un arreglo de Strings, donde cada posicion guarda un elemento
+			String id = line[0].trim();
+			String nombre = line[1].trim();
+			Integer tiempo = Integer.parseInt(line[2].trim());
+			Boolean critica = Boolean.parseBoolean(line[3].trim());
+			Integer prioridad = Integer.parseInt(line[4].trim());
+			// Aca instanciar lo que necesiten en base a los datos leidos
+
+			Tarea t = new Tarea(id, nombre, tiempo, prioridad, critica);
+			res.add(t);
+		}
+
+		return res;
+	}
 	
 	public void readProcessors(String processorPath) {
 		
