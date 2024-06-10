@@ -11,8 +11,8 @@ public class MainGreedy {
 
     public static void main(String[] args) {
         CSVReader readerGreedy = new CSVReader();
-        String pathProcesadores = "TPE/src/datasets/Procesadores2.csv";
-        String pathTareas = "TPE/src/datasets/Tareas2.csv";
+        String pathProcesadores = "TPE/src/datasets/Procesadores.csv";
+        String pathTareas = "TPE/src/datasets/Tareas.csv";
 
         LinkedList<Procesador> procesadores = readerGreedy.readProcessorsBack(pathProcesadores);
         LinkedList<Tarea> tareas = readerGreedy.readTasksGreedy(pathTareas);
@@ -23,7 +23,7 @@ public class MainGreedy {
         System.out.println("-- PRUEBA GREEDY --");
         System.out.println(s1);
         System.out.print("Tiempo maximo de ejecucion: ");
-        System.out.println(s1.getTiempo());
+        System.out.println(s1.getTiempoEjecucionTareas());
         System.out.print("Métrica para analizar el costo de la solución (cantidad de estados generados): ");
         System.out.println(g1.getCantEstados());
     }

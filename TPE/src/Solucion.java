@@ -67,6 +67,16 @@ public class Solucion {
         return tiempo;
     }
 
+    public int getTiempoEjecucionTareas(){
+        int res = 0;
+        for (Procesador p : this.solucion.keySet()){
+            if (this.getTiempoEjecucionTareas(p) > res){
+                res = this.getTiempoEjecucionTareas(p);
+            }
+        }
+        return res;
+    }
+
     public void desasignarTarea(Procesador p, Tarea t){
         if (this.solucion.containsKey(p)){
             solucion.get(p).remove(t);

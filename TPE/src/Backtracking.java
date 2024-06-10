@@ -43,18 +43,18 @@ public class Backtracking {
             }
         }else {
             Tarea tareaActual = tareas.pop();
+            if (solucionParcial.getTiempo() > this.solucion.getTiempo()) {
+                return; // Podar esta rama
+            }
             for (Procesador p : procesadores){
-
                 if (solucionParcial.esAsignable(p, tareaActual, tiempoMaxNoRefrigerado)){
-                    if (solucionParcial.getTiempo() > this.solucion.getTiempo()) {
-                        return; // Podar esta rama
-                    }
                     solucionParcial.asignarTarea(p, tareaActual);
                     back(procesadores, tareas, solucionParcial, tiempoMaxNoRefrigerado, cantTotalTareas);
                     //tareas.push(tareaActual);
                     solucionParcial.desasignarTarea(p, tareaActual);
                 }
             }
+            tareas.push(tareaActual);
         }
     }
 }

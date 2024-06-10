@@ -8,8 +8,8 @@ import java.util.Stack;
 public class MainBacktracking {
     public static void main(String[] args) {
         CSVReader readerBack = new CSVReader();
-        String pathProcesadores = "TPE/src/datasets/Procesadores2.csv";
-        String pathTareas = "TPE/src/datasets/Tareas2.csv";
+        String pathProcesadores = "TPE/src/datasets/Procesadores.csv";
+        String pathTareas = "TPE/src/datasets/Tareas.csv";
 
         LinkedList<Procesador> procesadores = readerBack.readProcessorsBack(pathProcesadores);
         Stack<Tarea> tareas = readerBack.readTasksBack(pathTareas);
