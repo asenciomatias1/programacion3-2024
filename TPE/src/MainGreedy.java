@@ -14,9 +14,6 @@ public class MainGreedy {
 
         LinkedList<Procesador> procesadores = readerGreedy.readProcessors(pathProcesadores);
         LinkedList<Tarea> tareas = readerGreedy.readTasksGreedy(pathTareas);
-        System.out.println(tareas);
-        Collections.sort(tareas);
-        System.out.println(tareas);
 
         Greedy g1 = new Greedy(procesadores);
 
