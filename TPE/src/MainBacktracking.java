@@ -15,7 +15,7 @@ public class MainBacktracking {
         Stack<Tarea> tareas = readerBack.readTasksBack(pathTareas);
 
         Backtracking b1 = new Backtracking(procesadores);
-        Solucion s1 = b1.back(procesadores, tareas, 60);
+        Solucion s1 = b1.back(procesadores, tareas, 100);
         System.out.println("-- PRUEBA BACKTRACKING --");
         System.out.println(s1);
         System.out.print("Tiempo maximo de ejecucion: ");

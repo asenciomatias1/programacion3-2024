@@ -19,7 +19,7 @@ public class MainGreedy {
 
         Greedy g1 = new Greedy(procesadores);
 
-        Solucion s1 = g1.greedy(procesadores, tareas, 60);
+        Solucion s1 = g1.greedy(procesadores, tareas, 100);
         System.out.println("-- PRUEBA GREEDY --");
         System.out.println(s1);
         System.out.print("Tiempo maximo de ejecucion: ");

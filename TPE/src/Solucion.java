@@ -27,7 +27,6 @@ public class Solucion {
 
     public void setTiempo(int tiempo) {
         this.tiempo = tiempo;
-        this.tiempo = tiempo;
     }
 
     public HashMap<Procesador, LinkedList<Tarea>> getSolucion() {

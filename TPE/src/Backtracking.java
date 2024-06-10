@@ -36,19 +36,19 @@ public class Backtracking {
         if (tareas.empty()){
             // El tiempo que hay que buscar es el tiempo de ejecucion del peor procesador (el mas lento o
             // que tenga el mayor tiempo) -- la suma de todos los tiempos de las tareas del peor procesador
-            if (this.solucion == null || this.solucion.getTiempo() > solucionParcial.getTiempo()
-                    && cantTotalTareas == solucionParcial.getCantTareasAsignadas()){
+            if (this.solucion == null || (this.solucion.getTiempo() > solucionParcial.getTiempo()
+                    && cantTotalTareas == solucionParcial.getCantTareasAsignadas())){
                 //this.solucion = solucionParcial;
                 this.solucion.copiarSolucion(solucionParcial);
             }
         }else {
             Tarea tareaActual = tareas.pop();
-            
             for (Procesador p : procesadores){
                 if (solucionParcial.esAsignable(p, tareaActual, tiempoMaxNoRefrigerado)){
                     solucionParcial.asignarTarea(p, tareaActual);
-                    back(procesadores, tareas, solucionParcial, tiempoMaxNoRefrigerado, cantTotalTareas);
-                    //tareas.push(tareaActual);
+                    if (this.solucion == null || (solucionParcial.getTiempo() < this.solucion.getTiempo())){
+                        back(procesadores, tareas, solucionParcial, tiempoMaxNoRefrigerado, cantTotalTareas);
+                    }
                     solucionParcial.desasignarTarea(p, tareaActual);
                 }
             }
