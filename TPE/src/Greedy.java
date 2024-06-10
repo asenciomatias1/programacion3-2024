@@ -49,19 +49,4 @@ public class Greedy {
         return procesadorOptimo;
     }
 
-//    private void ordenarProcesadoresPorRefrigeracion(LinkedList<Procesador> procesadores){
-//        LinkedList<Procesador> refrigerados = new LinkedList<>();
-//        LinkedList<Procesador> noRefrigerados = new LinkedList<>();
-//
-//        for (Procesador p : procesadores){
-//            if (p.esRefrigerado()){
-//                refrigerados.add(p);
-//            }else {
-//                noRefrigerados.add(p);
-//            }
-//        }
-//
-//        refrigerados.addAll(noRefrigerados);
-//        procesadores = refrigerados;
-//    }
 }
