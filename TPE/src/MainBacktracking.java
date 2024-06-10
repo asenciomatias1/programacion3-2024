@@ -11,15 +11,17 @@ public class MainBacktracking {
         String pathProcesadores = "TPE/src/datasets/Procesadores.csv";
         String pathTareas = "TPE/src/datasets/Tareas.csv";
 
-        LinkedList<Procesador> procesadores = readerBack.readProcessorsBack(pathProcesadores);
+        LinkedList<Procesador> procesadores = readerBack.readProcessors(pathProcesadores);
         Stack<Tarea> tareas = readerBack.readTasksBack(pathTareas);
 
         Backtracking b1 = new Backtracking(procesadores);
-        Solucion s1 = b1.back(procesadores, tareas, 100);
+        Solucion s1 = b1.back(procesadores, tareas, 50);
         System.out.println("-- PRUEBA BACKTRACKING --");
-        System.out.println(s1);
-        System.out.print("Tiempo maximo de ejecucion: ");
-        System.out.println(s1.getTiempo());
+        if (s1 != null){
+            System.out.println(s1);
+        } else {
+            System.out.println("Tiempo máximo de ejecución: 0. No se encontró solución");
+        }
         System.out.print("Métrica para analizar el costo de la solución (cantidad de estados generados): ");
         System.out.println(b1.getCantEstados());
     }

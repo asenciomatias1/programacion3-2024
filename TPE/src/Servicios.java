@@ -13,7 +13,8 @@ import java.util.List;
 public class Servicios {
 	HashMap<String, Tarea> criticas, noCriticas;
 	/*
-     * Expresar la complejidad temporal del constructor.
+     * Complejidad temporal: O(n). Ya que se instancian las estructuras en tiempo constante
+     * y luego el metodo readTasks tiene una complejidad de O(n). Donde n es la cantidad de Tareas en el dataset
      */
 	public Servicios(String pathProcesadores, String pathTareas)
 	{

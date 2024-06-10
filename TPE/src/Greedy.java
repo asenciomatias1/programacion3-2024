@@ -16,25 +16,37 @@ public class Greedy {
         return this.cantEstados;
     }
 
-    public Solucion greedy(LinkedList<Procesador>procesadores, LinkedList<Tarea>tareas, int tiempoMaxNoRefrigerado){
-        Collections.sort(tareas); // Se ordenan las tareas por tiempo de ejecucion ascendente
+    /**
+     * Técnica Greedy:
+     * Con este algoritmo optimizamos la asignación de tareas a procesadores, priorizando minimizar el tiempo de
+     * ejecución. Primero, ordena las tareas por tiempo de ejecución ascendente. Luego, en un bucle mientras queden
+     * tareas, selecciona la tarea con menor tiempo y busca el procesador óptimo, que será el que tenga el menor
+     * tiempo de ejecución hasta el momento.
+     * Si encuentra un procesador adecuado que cumpla con las restricciones, asigna la tarea a ese procesador y la
+     * elimina de la lista de tareas, si no, devuelve null indicando que no se puede completar la asignación y
+     * terminando el bucle ya que no fue posible asignar una de las tareas.
+     * El proceso se repite hasta asignar todas las tareas, construyendo así la solución que parece mejor en ese momento.
+     */
+    public Solucion greedy(LinkedList<Tarea>tareas, int tiempoMaxNoRefrigerado){
+        // Se ordenan las tareas por tiempo de ejecucion ascendente
+        Collections.sort(tareas);
 
-        while (!tareas.isEmpty()){  //Si tareas esta vacia, significa que las asigne todas
-            int tiempoMenor = Integer.MAX_VALUE; //Criterio de seleccion: elijo la tarea de menor tiempo
+        //Si tareas esta vacia, significa que las asigne todas
+        while (!tareas.isEmpty()){
             Tarea mejorTarea = tareas.get(0);
             Procesador procesadorOptimo = this.getProcesadorOptimo(mejorTarea, tiempoMaxNoRefrigerado);
             if (procesadorOptimo != null) {
                 this.solucion.asignarTarea(procesadorOptimo, mejorTarea);
                 tareas.remove(mejorTarea);
             } else {
+                // No ha sido posible una asignacion completa de tareas
                 return null;
             }
             this.cantEstados++;
-        }//Al salir del while, deberia tener la solucion armada
+        }
 
         return solucion;
     }
-
 
     private Procesador getProcesadorOptimo(Tarea t, int tiempoMaxNoRefrigerado){
         Procesador procesadorOptimo = null;

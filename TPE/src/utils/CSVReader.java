@@ -90,26 +90,8 @@ public class CSVReader {
 
 		return res;
 	}
-	
-	public void readProcessors(String processorPath) {
-		
-		// Obtengo una lista con las lineas del archivo
-		// lines.get(0) tiene la primer linea del archivo
-		// lines.get(1) tiene la segunda linea del archivo... y así
-		ArrayList<String[]> lines = this.readContent(processorPath);
-		
-		for (String[] line: lines) {
-			// Cada linea es un arreglo de Strings, donde cada posicion guarda un elemento
-			String id = line[0].trim();
-			String codigo = line[1].trim();
-			Boolean refrigerado = Boolean.parseBoolean(line[2].trim());
-			Integer anio = Integer.parseInt(line[3].trim());
-			// Aca instanciar lo que necesiten en base a los datos leidos
-		}
 
-	}
-
-	public LinkedList<Procesador> readProcessorsBack(String processorPath) {
+	public LinkedList<Procesador> readProcessors(String processorPath) {
 
 		// Obtengo una lista con las lineas del archivo
 		// lines.get(0) tiene la primer linea del archivo

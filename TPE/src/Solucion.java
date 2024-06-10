@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class Solucion {
-    private int tiempo; //El tiempo mayor del peor procesador
+    private int tiempo;
     private HashMap<Procesador, LinkedList<Tarea>> solucion;
 
     public Solucion(){
@@ -17,7 +17,7 @@ public class Solucion {
         this.tiempo = Integer.MAX_VALUE;
         this.solucion = new HashMap<>();
         for (Procesador p : procesadores){
-            solucion.put(p, new LinkedList<Tarea>());
+            solucion.put(p, new LinkedList<>());
         }
     }
 
@@ -68,9 +68,11 @@ public class Solucion {
 
     public int getTiempoEjecucionTareas(){
         int res = 0;
-        for (Procesador p : this.solucion.keySet()){
-            if (this.getTiempoEjecucionTareas(p) > res){
-                res = this.getTiempoEjecucionTareas(p);
+        if (this.solucion != null){
+            for (Procesador p : this.solucion.keySet()){
+                if (this.getTiempoEjecucionTareas(p) > res){
+                    res = this.getTiempoEjecucionTareas(p);
+                }
             }
         }
         return res;
@@ -93,7 +95,7 @@ public class Solucion {
         else if (t.esCritica() && !p.esRefrigerado()){
             return esAsignableCritica(p, t) && esAsignablePorTiempo(p, t, tiempoMaxNoRefrigerado);
         }
-        //!t.esCritica() && !p.esRefrigerado()) {
+        // La tarea no es critica y el procesador no es refrigerado
         return esAsignablePorTiempo(p, t, tiempoMaxNoRefrigerado);
 
     }
@@ -127,6 +129,15 @@ public class Solucion {
         this.solucion = copia;
     }
 
+    public int getCantTareasAsignadas() {
+        int res = 0;
+        for (Procesador p : this.solucion.keySet()){
+            res += this.solucion.get(p).size();
+        }
+
+        return res;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -142,15 +153,9 @@ public class Solucion {
 
             sb.append("\n"); // Salto de línea entre procesadores
         }
+
+        sb.append("Tiempo máximo de ejecución: ").append(this.getTiempoEjecucionTareas());
+
         return sb.toString();
-    }
-
-    public int getCantTareasAsignadas() {
-        int res = 0;
-        for (Procesador p : this.solucion.keySet()){
-            res += this.solucion.get(p).size();
-        }
-
-        return res;
     }
 }
