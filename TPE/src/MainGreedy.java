@@ -27,7 +27,7 @@ public class MainGreedy {
         } else {
             System.out.println("Tiempo máximo de ejecución: 0. No se encontró solución");
         }
-        System.out.print("Métrica para analizar el costo de la solución (cantidad de estados generados): ");
-        System.out.println(g1.getCantEstados());
+        System.out.print("Métrica para analizar el costo de la solución (cantidad de candidatos considerados): ");
+        System.out.println(g1.getCantCandidatos());
     }
 }

@@ -5,15 +5,15 @@ import java.util.LinkedList;
 
 public class Greedy {
     private Solucion solucion;
-    private int cantEstados;
+    private int cantCandidatos;
 
     public Greedy(LinkedList<Procesador> procesadores){
         this.solucion = new Solucion(procesadores);
-        this.cantEstados = 0;
+        this.cantCandidatos = 0;
     }
 
-    public int getCantEstados(){
-        return this.cantEstados;
+    public int getCantCandidatos(){
+        return this.cantCandidatos;
     }
 
     /**
@@ -42,7 +42,7 @@ public class Greedy {
                 // No ha sido posible una asignacion completa de tareas
                 return null;
             }
-            this.cantEstados++;
+            this.cantCandidatos++;
         }
 
         return solucion;
